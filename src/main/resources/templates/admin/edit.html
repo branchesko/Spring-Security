@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирования пользователя</title>
+</head>
+<body>
+<h1>Редактировать пользователя </h1>
+<form th:action="@{/admin/{id}(id=${user.id})}" method="post" th:object="${user}">
+    <input type="hidden" name="_method" value="patch"/>
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Username: <input type="text" th:field="*{username}"/></label><br/>
+    <label>Password: <input type="password" th:field="*{password}"/></label><br/>
+    <label>Roles:
+        <select multiple name="roles">
+            <option th:each="role : ${roles}"
+                    th:value="${role.id}"
+                    th:selected="${#lists.contains(user.roles,role)}"
+                    th:text="${role.name}"></option>
+        </select>
+    </label><br/>
+    <button type="submit">Обновить</button>
+</form>
+<a href="/admin">панель админа</a>
+</body>
+</html>l>
