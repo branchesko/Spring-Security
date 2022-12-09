@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Сраница пользователя</title>
+</head>
+<body>
+<h1>Информация о пользователе</h1>
+<p>Username: <span th:text="${user.username}"></span></p>
+<p>Roles:
+  <span th:each="role, iterStat : ${user.roles}"
+        th:text="${role.name} + (${iterStat.last} ? '' : ', ')"></span>
+</p>
+<form th:action="@{/logout}" method="post" style="display: inline;">
+  <button type="submit">выйти</button>
+</form>
+</body>
+</html>
