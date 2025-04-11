@@ -10,9 +10,9 @@
     <input type="hidden" name="_method" value="patch"/>
     <input type="hidden" th:field="*{id}"/>
 
-    <label>Username: <input type="text" th:field="*{username}"/></label><br/>
-    <label>Password: <input type="password" th:field="*{password}"/></label><br/>
-    <label>Roles:
+    <label>Имя: <input type="text" th:field="*{username}"/></label><br/>
+    <label>Пароль: <input type="password" th:field="*{password}"/></label><br/>
+    <label>Роль:
         <select multiple name="roles">
             <option th:each="role : ${roles}"
                     th:value="${role.id}"

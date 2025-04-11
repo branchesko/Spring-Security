@@ -5,15 +5,14 @@
     <title>Панель</title>
 </head>
 <body>
-<h2><span th:text="${user.username}"></span>!</h2>
 
-<h3>All Users</h3>
-<table border="1">
+<h3>все пользователи</h3>
+<table border="1" >
     <tr>
         <th>ID</th>
-        <th>Username</th>
-        <th>Roles</th>
-        <th>Actions</th>
+        <th>Имя пользователя</th>
+        <th>Роль</th>
+        <th>Действие</th>
     </tr>
     <tr th:each="u : ${users}">
         <td th:text="${u.id}"></td>
@@ -23,16 +22,16 @@
                   th:text="${role.name} + (${iterStat.last} ? '' : ', ')"></span>
         </td>
         <td>
-            <a th:href="@{/admin/{id}/edit(id=${u.id})}">Edit</a>
+            <a th:href="@{/admin/{id}/edit(id=${u.id})}">Редактировать</a>
             <form th:action="@{/admin/{id}(id=${u.id})}" method="post" style="display: inline;">
                 <input type="hidden" name="_method" value="delete"/>
-                <button type="submit">Delete</button>
+                <button type="submit">Удалить</button>
             </form>
         </td>
     </tr>
 </table>
 
-<a href="/admin/new">Create New User</a>
+<a href="/admin/new">Создать нового пользователя </a>
 <br/>
 <form th:action="@{/logout}" method="post" style="display: inline;">
     <button type="submit">Выйти</button>
